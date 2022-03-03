@@ -1,0 +1,765 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaonian">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="信号与系统C复习 2021.12.23第1章 信号与系统的基本概念1.1 信号的描述和分类1.1.1 信号的特性​    时域特性和频率特性。 ​    (1) 时域：幅度随时间变化（表示为时间t的函数）。 ​    (2) 频率：各正弦谐波分量的振幅和初相随时间变化（分解为许多不同频率的正弦分量）。 1.1.2 信号的分类​    确定和随机信号、连续时间$f(t)$ 和 离散时间$f(t_k)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信号与系统C复习">
+<meta property="og:url" content="http://www.xia0nian.xyz/2022/02/28/SignalAndSystem/index.html">
+<meta property="og:site_name" content="小念">
+<meta property="og:description" content="信号与系统C复习 2021.12.23第1章 信号与系统的基本概念1.1 信号的描述和分类1.1.1 信号的特性​    时域特性和频率特性。 ​    (1) 时域：幅度随时间变化（表示为时间t的函数）。 ​    (2) 频率：各正弦谐波分量的振幅和初相随时间变化（分解为许多不同频率的正弦分量）。 1.1.2 信号的分类​    确定和随机信号、连续时间$f(t)$ 和 离散时间$f(t_k)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-28T09:23:42.000Z">
+<meta property="article:modified_time" content="2022-02-28T13:57:26.951Z">
+<meta property="article:author" content="xiaonian">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>信号与系统C复习 - 小念</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.xia0nian.xyz","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/3dfish2dweb/image-hosting@master/background.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="信号与系统C复习"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-28 17:23" pubdate>
+          2022年2月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">信号与系统C复习</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="信号与系统C复习-2021-12-23"><a href="#信号与系统C复习-2021-12-23" class="headerlink" title="信号与系统C复习 2021.12.23"></a>信号与系统C复习 2021.12.23</h1><h2 id="第1章-信号与系统的基本概念"><a href="#第1章-信号与系统的基本概念" class="headerlink" title="第1章 信号与系统的基本概念"></a>第1章 信号与系统的基本概念</h2><h3 id="1-1-信号的描述和分类"><a href="#1-1-信号的描述和分类" class="headerlink" title="1.1 信号的描述和分类"></a>1.1 信号的描述和分类</h3><h4 id="1-1-1-信号的特性"><a href="#1-1-1-信号的特性" class="headerlink" title="1.1.1 信号的特性"></a>1.1.1 信号的特性</h4><p>​    时域特性和频率特性。</p>
+<p>​    (1) 时域：幅度随时间变化（表示为时间t的函数）。</p>
+<p>​    (2) 频率：各正弦谐波分量的振幅和初相随时间变化（分解为许多不同频率的正弦分量）。</p>
+<h4 id="1-1-2-信号的分类"><a href="#1-1-2-信号的分类" class="headerlink" title="1.1.2 信号的分类"></a>1.1.2 信号的分类</h4><p>​    确定和随机信号、连续时间$f(t)$ 和 离散时间$f(t_k)$，$f(kT)$，$f(k)$信号、<strong>周期和非周期信号。</strong></p>
+<h4 id="1-1-3-信号周期性的判断"><a href="#1-1-3-信号周期性的判断" class="headerlink" title="1.1.3 信号周期性的判断"></a>1.1.3 信号周期性的判断</h4><p><strong>(1)</strong> <strong>连续信号：$T_1,T_2$存在最小公倍数，即$T_1&#x2F;T_2&#x3D;n_1&#x2F;n_2$为有理数，周期$T&#x3D;n_1T_1&#x3D;n_2T_2$，$n_1$和$n_2$为整数。</strong></p>
+<p>​    $f_T(t) &#x3D; f_T(t + T) (-\infty &lt; t &lt; \infty)$</p>
+<p>​    <strong>周期 $T&#x3D;2\pi&#x2F;\omega_0$</strong></p>
+<p>​    <strong>角频率 $\omega_0 &#x3D; 2\pi &#x2F; T (rad &#x2F; s)$</strong></p>
+<p><strong>(2)</strong> <strong>离散信号：正弦序列 $x(k) &#x3D; Asin(\Omega_0k + \varphi)$，当$\Omega_0 &#x2F; 2\pi &#x3D; m &#x2F; N$是有理数时，为周期序列，周期为N，是无理数时，为非周期序列。</strong></p>
+<p>​    $f_N(k)&#x3D;f_N(k+N)(-\infty&lt;k&lt;\infty,k和N取整数)$</p>
+<p>​    周期$N$</p>
+<p>​    数字角频率$\Omega_0&#x3D;\omega_0T_s(rad)$</p>
+<h4 id="考点"><a href="#考点" class="headerlink" title="考点"></a><u><em><strong>考点</strong></em></u></h4><p><em><strong>想要判断是周期 &#x2F; 非周期信号，连续就用 $T_1&#x2F;T_2&#x3D;n_1&#x2F;n_2$是有理数结合 $T&#x3D;2\pi&#x2F;\omega_0$，离散就用 $\Omega_0 &#x2F; 2\pi &#x3D; m &#x2F; N$是有理数。</strong></em></p>
+<h3 id="1-2-系统的描述和分类"><a href="#1-2-系统的描述和分类" class="headerlink" title="1.2 系统的描述和分类"></a>1.2 系统的描述和分类</h3><h4 id="1-2-1-系统的分类"><a href="#1-2-1-系统的分类" class="headerlink" title="1.2.1 系统的分类"></a>1.2.1 系统的分类</h4><p>​    连续和离散时间系统、线性和非线性系统、时变和时不变系统。</p>
+<h4 id="1-2-2-连续时间和离散时间系统"><a href="#1-2-2-连续时间和离散时间系统" class="headerlink" title="1.2.2 连续时间和离散时间系统"></a>1.2.2 连续时间和离散时间系统</h4><p>​    输入和输出都是连续（离散）时间信号的系统。</p>
+<h4 id="1-2-3-线性系统和非线性系统"><a href="#1-2-3-线性系统和非线性系统" class="headerlink" title="1.2.3 线性系统和非线性系统"></a>1.2.3 <strong>线性系统</strong>和非线性系统</h4><h5 id="1-线性特性"><a href="#1-线性特性" class="headerlink" title="(1) 线性特性"></a>(1) 线性特性</h5><p>​        齐次性：若$x(t)\rightarrow y(t)$，则$kx(t)\rightarrow ky(t)$</p>
+<p>​        叠加性：若$x_1(t)\rightarrow y_1(t)$，$x_2(t)\rightarrow y_2(t)$，则$x_1(t) + x_2(t)\rightarrow y_1(t)+y_2(t)$ </p>
+<p>​        <strong>线性系统：</strong>若$x_1(t)\rightarrow y_1(t)$，$x_2(t)\rightarrow y_2(t)$，则$k_1x_1(t) + k_2x_2(t)\rightarrow k_1y_1(t)+k_2y_2(t)$ </p>
+<h4 id="考点-1"><a href="#考点-1" class="headerlink" title="考点"></a><u><em>考点</em></u></h4><p><em><strong>对于不具有初始状态的系统，想要判断是线性 &#x2F; 非线性系统，只要判断是否满足上述条件。</strong></em></p>
+<h5 id="2-具有初始状态的系统"><a href="#2-具有初始状态的系统" class="headerlink" title="(2) 具有初始状态的系统"></a>(2) 具有初始状态的系统</h5><p>​        其响应包括：</p>
+<p>​        <strong>零状态响应</strong>$y_{zs}(t)$：初始状态为零，仅由外部激励作用引起的响应。</p>
+<p>​        <strong>零输入响应</strong>$y_{zi}(t)$：外部激励为零，仅由初始状态作用引起的响应。</p>
+<p>​        <strong>全响应</strong>$y(t)$：两个共同作用，称为完全响应。</p>
+<p>​        对于<strong>具有初始状态</strong>的线性系统应具有下列特性：</p>
+<p>​        <strong>a.分解性 ：</strong>全相应 &#x3D; 零输入响应 + 零状态响应</p>
+<p>​        <strong>b.零输入线性：</strong>系统有多个初始状态时，零输入响应对每个初始状态呈线性。</p>
+<p>​        <strong>c.零状态线性：</strong>系统有多个输入时，零状态响应对每个输入呈线性。</p>
+<h4 id="考点-2"><a href="#考点-2" class="headerlink" title="考点"></a><u><em>考点</em></u></h4><p><em><strong>对于具有初始状态的系统，想要判断是线性 &#x2F; 非线性系统，就要判断是否满足三个条件：</strong></em></p>
+<p><em><strong>1.分解性。</strong></em></p>
+<p><em><strong>2.零输入线性。</strong></em></p>
+<p><em><strong>3.零状态线性。</strong></em></p>
+<p><strong>例如：</strong></p>
+<p> $y(t)&#x3D;3x(t)+2q(0)$ ：</p>
+<p>(1)    零状态响应：$y_{zs}(t) &#x3D; 3x(t)$     零输入响应：$y_{zi}&#x3D;2q(0)$    系统具有可分解性。</p>
+<p>(2)    假设    $x_1(t)$    单独激励的零状态响应为    $y_{1zs}&#x3D;3x_1(t)$，    $x_2(t)$    为    $y_{2zs}&#x3D;3x_2(t)$</p>
+<p>​        则当激励为    $x_a(t)&#x3D;k_1x_1(t)+k_2x_2(t)$    </p>
+<p>​        系统零状态响应为    $y_{azs}(t)&#x3D;3x_a(t)&#x3D;3[k_1x_1(t)+k_2x_2(t)]$</p>
+<p>​        而    $k_1y_{1zs}(t)+k_2y_{2zs}(t)&#x3D;k_1[3x_1(t)]+k_2[3x_2(t)]&#x3D;y_{azs}(t)$</p>
+<p>​        所以零状态响应满足线性。</p>
+<p>(3)    假设    $y_{1zi}&#x3D;2q_1(0)$    $y_{2zi}&#x3D;2q_2(0)$    </p>
+<p>​        则当初始状态    $q_a(0)&#x3D;k_1q_1(0)+k_2q_2(0)$</p>
+<p>​        系统的零输入响应为    $y_{azi}(t)&#x3D;2[k_1q_1(0)+k_2q_2(0)]$</p>
+<p>​        而    $k_1y_{1zi}(t)+k_2y_{2zi}(t)&#x3D;k_1[2q_1(0)]+k_2[q_2(0)]&#x3D;y_{azi}(t)$</p>
+<p>​        所以零输入响应满足线性。</p>
+<p>所以，该系统同时满足线性系统的三个条件，所以是线性系统。</p>
+<p>​        </p>
+<h4 id="1-2-4-时不变系统和时变系统"><a href="#1-2-4-时不变系统和时变系统" class="headerlink" title="1.2.4 时不变系统和时变系统"></a>1.2.4 时不变系统和时变系统</h4><p>​    时不变系统：系统的<strong>零状态响应</strong>的特性不随时间的变化而改变。即</p>
+<p>若    $x(t)\rightarrow y(t)$    则    $x(t-t_d)\rightarrow y(t-t_d)$</p>
+<h4 id="考点-3"><a href="#考点-3" class="headerlink" title="考点"></a><u><em>考点</em></u></h4><p><em><strong>想要判断系统是时变 &#x2F; 时不变系统，只要判断是否满足上述条件</strong></em>。</p>
+<p><strong>例如：</strong></p>
+<p>$y(t)&#x3D;sin[x(t)]$ ：</p>
+<p>$x_1(t)\rightarrow y_1(t) &#x3D; sin[x_1(t)]$</p>
+<p>若    $x_1(t)&#x3D;x(t-t_d)\rightarrow y_1(t)&#x3D;sin[x_1(t)]&#x3D;sin[x(t-t_d)]$</p>
+<p>而    $y(t-t_d) &#x3D; sin[x(t - t_d)]&#x3D;y_1(t)$</p>
+<p>所以该系统为时不变系统。</p>
+<h4 id="1-2-5-因果系统和非因果系统"><a href="#1-2-5-因果系统和非因果系统" class="headerlink" title="1.2.5 因果系统和非因果系统"></a>1.2.5 因果系统和非因果系统</h4><p>​    <strong>因果系统</strong>：是指响应不会超前于激励的系统，没有输入就没有输出。反之为非因果系统。</p>
+<p>​    任何时刻的响应只取决于激励的现在与过去值，而与激励的将来值无关。</p>
+<p>​    如：    $\int_{-\infty}^t x(\tau)d\tau$</p>
+<h3 id="1-3-信号与系统分析概述（了解）"><a href="#1-3-信号与系统分析概述（了解）" class="headerlink" title="1.3 信号与系统分析概述（了解）"></a>1.3 信号与系统分析概述（了解）</h3><ol>
+<li><p>信号与系统的基本内容：</p>
+<p>信号分析、系统分析</p>
+</li>
+<li><p>本课程只限于讨论信号与线性时不变系统的分析。</p>
+</li>
+<li><p>本课程只讨论采用输入－输出关系描述的单输入－单输出系统。</p>
+</li>
+<li><p>本课程只讨论确定信号及其作用于线性时不变系统的响应：</p>
+<p>确定信号：解析法、随机信号：概率统计</p>
+</li>
+<li><p>信号与系统分析可以在时间域中进行，也可以在变换域中进行：</p>
+<p>时间域：物理概念清楚，但计算繁琐</p>
+<p>变换域：简化计算</p>
+</li>
+</ol>
+<h2 id="第2章-连续时间信号与系统的时域分析"><a href="#第2章-连续时间信号与系统的时域分析" class="headerlink" title="第2章 连续时间信号与系统的时域分析"></a>第2章 连续时间信号与系统的时域分析</h2><h3 id="2-1-典型连续时间信号"><a href="#2-1-典型连续时间信号" class="headerlink" title="2.1 典型连续时间信号"></a>2.1 典型连续时间信号</h3><h4 id="2-1-1-复指数信号"><a href="#2-1-1-复指数信号" class="headerlink" title="2.1.1 复指数信号"></a>2.1.1 复指数信号</h4><p>数学表达式：$f(t) &#x3D; Ae^{st}$        复振幅：$A&#x3D;|A|e^{j\theta}$        复频率：$s&#x3D;\sigma+j\omega$</p>
+<p>欧拉公式展开：$Ae^{st}&#x3D;|A|e^{j\theta}e^{(\sigma+j\omega_0)t}&#x3D;|A|e^{\sigma t}cos(\omega_0t+\theta)+j|A|e^{\sigma t}sin(\omega_0t+\theta)$</p>
+<p>根据A和s的取值不同，$Ae^{st}$可用来表示不同的信号：</p>
+<h5 id="1-直流信号"><a href="#1-直流信号" class="headerlink" title="(1) 直流信号"></a>(1) 直流信号</h5><p>​    当A为实数，s &#x3D; 0（即$\sigma &#x3D; 0$，$\omega_0 &#x3D; 0$），此时$Ae^{st}&#x3D;A$成为直流信号。</p>
+<h5 id="2-实指数信号"><a href="#2-实指数信号" class="headerlink" title="(2) 实指数信号"></a>(2) 实指数信号</h5><p>​    当A为实数，$\omega_0&#x3D;0$时，$Ae^{st}&#x3D;Ae^{\sigma t}$单调增长($\sigma&gt;0$)或衰减($\sigma&lt;0$)的实指数信号。</p>
+<h5 id="3-正弦信号（虚指数信号）"><a href="#3-正弦信号（虚指数信号）" class="headerlink" title="(3) 正弦信号（虚指数信号）"></a>(3) 正弦信号（虚指数信号）</h5><p>​    当A为复数，$\sigma&#x3D;0$，则此时$Ae^{st}&#x3D;|A|cos(\omega_0t+\theta)+j|A|sin(\omega_0t+\theta)$，实部为等幅的余弦信号，虚部为等幅的正弦信号。</p>
+<h5 id="4-复指数信号"><a href="#4-复指数信号" class="headerlink" title="(4) 复指数信号"></a>(4) 复指数信号</h5><p>​    一般情况下：$Ae^{st}&#x3D;|A|e^{j\theta}e^{(\sigma+j\omega_0)t}&#x3D;|A|e^{\sigma t}cos(\omega_0t+\theta)+j|A|e^{\sigma t}sin(\omega_0t+\theta)$    </p>
+<p>​    实部为增长(增幅)($\sigma&gt;0$)或衰减($\sigma&lt;0$)的余弦信号，虚部为增长(增幅)($\sigma&gt;0$)或衰减($\sigma&lt;0$)的正弦信号。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>信号与系统C复习</div>
+      <div>http://www.xia0nian.xyz/2022/02/28/SignalAndSystem/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xiaonian</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月28日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/01/CodeForces-765-Div2-Problem-C/" title="Codeforces Round 765(Div. 2) Problem C(两种DP方式)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Codeforces Round 765(Div. 2) Problem C(两种DP方式)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/28/newHexoBlog/" title="基于Hexo+Nginx+Git在云服务器上搭建个人网站">
+                        <span class="hidden-mobile">基于Hexo+Nginx+Git在云服务器上搭建个人网站</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.0/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
