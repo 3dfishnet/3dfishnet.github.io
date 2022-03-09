@@ -24,7 +24,7 @@
 <meta property="og:description" content="原题链接C++ Lambda函数（匿名函数）的使用方法​    首先了解一下 C++ 匿名函数的基本使用方法 基本语法1234&#x2F;&#x2F;[捕获列表](参数列表)-&gt;返回类型&amp;#123;函数体&amp;#125;auto f &#x3D; [](int a, int b)-&gt;int &amp;#123;	return a + b;&amp;#125;;  捕获列表​    []：空捕获列表，Lambda不能使用所在函数中的变量">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-07T09:23:00.000Z">
-<meta property="article:modified_time" content="2022-03-08T18:12:16.967Z">
+<meta property="article:modified_time" content="2022-03-09T03:55:14.047Z">
 <meta property="article:author" content="xiaonian">
 <meta property="article:tag" content="solves">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          2.5k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          18 分钟
+          21 分钟
         
       </span>
     
@@ -278,6 +278,9 @@
 
 <h4 id="在-main-函数里写递归调用"><a href="#在-main-函数里写递归调用" class="headerlink" title="在$main$函数里写递归调用"></a>在$main$函数里写递归调用</h4><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/">104. 二叉树的最大深度</a></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxDepth</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-comment">//在匿名函数中第一个参数是自身，且在内部都使用那个名字</span><br>        <span class="hljs-keyword">auto</span> dfs = [&amp;](<span class="hljs-keyword">auto</span> &amp;self, TreeNode *root)-&gt;<span class="hljs-type">int</span>&#123;<br>            <span class="hljs-keyword">if</span>(!root) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(<span class="hljs-built_in">self</span>(self, root-&gt;left), <span class="hljs-built_in">self</span>(self, root-&gt;right)) + <span class="hljs-number">1</span>;<br>        &#125;;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">dfs</span>(dfs, root);<span class="hljs-comment">//别忘了参数要有自身</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/">124. 二叉树中的最大路径和</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxPathSum</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-type">int</span> maxsum = <span class="hljs-number">-2e9</span>;<br>        <span class="hljs-keyword">auto</span> dfs = [&amp;](<span class="hljs-keyword">auto</span> &amp;self, TreeNode* root) -&gt;<span class="hljs-type">int</span>&#123;<br>            <span class="hljs-keyword">if</span>(!root) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            <span class="hljs-type">int</span> l = <span class="hljs-built_in">max</span>(<span class="hljs-built_in">self</span>(self, root-&gt;left), <span class="hljs-number">0</span>), r = <span class="hljs-built_in">max</span>(<span class="hljs-built_in">self</span>(self, root-&gt;right), <span class="hljs-number">0</span>);<br>            maxsum = <span class="hljs-built_in">max</span>(maxsum, root-&gt;val + l + r);<br>            <span class="hljs-keyword">return</span> root-&gt;val + <span class="hljs-built_in">max</span>(l, r);<br>        &#125;;<br>        <span class="hljs-built_in">dfs</span>(dfs, root);<br>        <span class="hljs-keyword">return</span> maxsum;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
 
