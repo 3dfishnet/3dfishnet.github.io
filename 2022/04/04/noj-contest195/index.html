@@ -16,21 +16,19 @@
   <meta name="author" content="xiaonian">
   <meta name="keywords" content="">
   
-    <meta name="description" content="原题链接 没有上司的舞会2题目描述一家公司里有 $n$ 个员工，除了公司 CEO 外，每个人都有一个直接上司。今天公司要办一个舞会，为了大家玩得尽兴，如果某个员工的直接上司来了，他&#x2F;她就不想来了。第 $i$ 个员工来参加舞会会为大家带来 $a_i$ 点快乐值。由于场地有大小限制，场地最多只能容纳 $m$ 个人。请求出快乐值最大是多少。 输入格式第一行2个整数$n,m$。 接下来一行，$n">
-<meta property="og:type" content="article">
-<meta property="og:title" content="DOJ没有上司的舞会2（树形背包）">
-<meta property="og:url" content="http://www.xia0nian.xyz/2022/03/08/DOJ%E6%B2%A1%E6%9C%89%E4%B8%8A%E5%8F%B8%E7%9A%84%E8%88%9E%E4%BC%9A2/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="noj contest195">
+<meta property="og:url" content="http://www.xia0nian.xyz/2022/04/04/noj-contest195/index.html">
 <meta property="og:site_name" content="小念">
-<meta property="og:description" content="原题链接 没有上司的舞会2题目描述一家公司里有 $n$ 个员工，除了公司 CEO 外，每个人都有一个直接上司。今天公司要办一个舞会，为了大家玩得尽兴，如果某个员工的直接上司来了，他&#x2F;她就不想来了。第 $i$ 个员工来参加舞会会为大家带来 $a_i$ 点快乐值。由于场地有大小限制，场地最多只能容纳 $m$ 个人。请求出快乐值最大是多少。 输入格式第一行2个整数$n,m$。 接下来一行，$n">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-08T15:06:08.000Z">
-<meta property="article:modified_time" content="2022-04-04T10:24:35.889Z">
+<meta property="article:published_time" content="2022-04-04T09:37:51.000Z">
+<meta property="article:modified_time" content="2022-04-04T10:25:35.623Z">
 <meta property="article:author" content="xiaonian">
-<meta property="article:tag" content="doj">
+<meta property="article:tag" content="蓝桥杯">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>DOJ没有上司的舞会2（树形背包） - 小念</title>
+  <title>noj contest195 - 小念</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +185,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="DOJ没有上司的舞会2（树形背包）"></span>
+            <span id="subtitle" data-typed-text="noj contest195"></span>
           
         </div>
 
@@ -198,8 +196,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-08 23:06" pubdate>
-          2022年3月8日 晚上
+        <time datetime="2022-04-04 17:37" pubdate>
+          2022年4月4日 下午
         </time>
       </span>
     
@@ -210,7 +208,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          0 字
         
       </span>
     
@@ -221,7 +219,7 @@
         
         
         
-          14 分钟
+          1 分钟
         
       </span>
     
@@ -259,24 +257,11 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">DOJ没有上司的舞会2（树形背包）</h1>
+            <h1 style="display: none">noj contest195</h1>
             
             <div class="markdown-body">
               
-              <p><a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/5/problem/219">原题链接</a></p>
-<h1 id="没有上司的舞会2"><a href="#没有上司的舞会2" class="headerlink" title="没有上司的舞会2"></a>没有上司的舞会2</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>一家公司里有 $n$ 个员工，除了公司 CEO 外，每个人都有一个直接上司。今天公司要办一个舞会，为了大家玩得尽兴，如果某个员工的直接上司来了，他&#x2F;她就不想来了。第 $i$ 个员工来参加舞会会为大家带来 $a_i$ 点快乐值。由于场地有大小限制，场地最多只能容纳 $m$ 个人。请求出快乐值最大是多少。</p>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行2个整数$n,m$。</p>
-<p>接下来一行，$n-1$个整数$f_2,f_3…f_n$，$f_i(2\le i\le n)$表示第$i$个员工的上司。其中$1$号点为CEO，没有上司。</p>
-<p>接下来一行，$n$个整数$a_1,a_2…a_n$表示每个员工的快乐值。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>一行一个整数，表示答案。</p>
-<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">5 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">1</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">8</span> <span class="hljs-number">10</span> <span class="hljs-number">8</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">16<br></code></pre></td></tr></table></figure>
-
-<h2 id="数据规模"><a href="#数据规模" class="headerlink" title="数据规模"></a>数据规模</h2><p>对于所有数据，保证$2\le n \le 500, 0 \le m \le n,1 \le a_i \le 100000$。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">505</span>;<br>vector&lt;<span class="hljs-type">int</span>&gt; h[N];<br><span class="hljs-type">int</span> f[N][N][<span class="hljs-number">2</span>], w[N];<br><span class="hljs-type">int</span> n, m;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span></span>&#123;<br>	<span class="hljs-comment">//把结点i看成一个容量为m的背包</span><br>	<span class="hljs-comment">//每一个直接子树都看成一种物品（每种物品最多取m个）</span><br>	<span class="hljs-comment">//遍历每一个直接子树</span><br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> s : h[i])<br>	&#123;<br>		<span class="hljs-built_in">dfs</span>(s);<br>		<span class="hljs-comment">//先递归处理子树</span><br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = m; j &gt;= <span class="hljs-number">0</span>; j --)<br>		&#123;<br>			<span class="hljs-comment">//在s和s之前最多取了j个物品（占用了j容量）</span><br>			<span class="hljs-comment">//为了保证一次循环中，s不会被取多次（即不会更新之后又用它更新其他的情况）</span><br>			<span class="hljs-comment">//所以j从大到小遍历，因为下面状态更新的时候只会调用比j小的状态</span><br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k = <span class="hljs-number">0</span>; k &lt;= j; k ++)<br>			&#123;<br>				<span class="hljs-comment">//枚举取0~j个s物品的情况，0表示i不取，1表示i取</span><br>				f[i][j][<span class="hljs-number">0</span>] = <span class="hljs-built_in">max</span>(f[i][j][<span class="hljs-number">0</span>], f[i][j - k][<span class="hljs-number">0</span>] + <span class="hljs-built_in">max</span>(f[s][k][<span class="hljs-number">1</span>], f[s][k][<span class="hljs-number">0</span>]));<br>				<span class="hljs-comment">//f[i][j - k][0]表示上一个状态下，最多取j-k个物品的最大价值，这样就可以再取k个s物品</span><br>				<span class="hljs-comment">//因为i没取，所以可以从直接孩子取或不取里面取最大的</span><br>				f[i][j][<span class="hljs-number">1</span>] = <span class="hljs-built_in">max</span>(f[i][j][<span class="hljs-number">1</span>], f[i][j - k][<span class="hljs-number">1</span>] + f[s][k][<span class="hljs-number">0</span>]);<br>				<span class="hljs-comment">//因为i也取，所以只能从f[s][k][0]转移</span><br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-comment">//但是实际上，我们得到的f[i][j][1]是以i为背包，最多取j个物品的最大价值，里面并不包含i物品本身</span><br>	<span class="hljs-comment">//所以我们需要再把i物品加进去，因此在最多取j-1个物品的最大价值里面加上i物品的价值即可</span><br>	<span class="hljs-comment">//这样我们的f[i][j][1]就表示以i为背包，最多取j个物品，里面且包含i物品本身的最大价值</span><br>	<span class="hljs-comment">//同样为了重复计算，我们要从大到小遍历</span><br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = m; j; j --)<br>		f[i][j][<span class="hljs-number">1</span>] = f[i][j - <span class="hljs-number">1</span>][<span class="hljs-number">1</span>] + w[i];<br><br>	<span class="hljs-comment">// f[i][0][1] = 0; //默认是0，所以无所谓</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br><br><br>    cin &gt;&gt; n &gt;&gt; m;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i ++)&#123;<br>    	<span class="hljs-type">int</span> x;<br>    	cin &gt;&gt; x;<br>    	h[x].<span class="hljs-built_in">push_back</span>(i);<br>    &#125;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) cin &gt;&gt; w[i];<br><br>    <span class="hljs-built_in">dfs</span>(<span class="hljs-number">1</span>);<br><br>	cout &lt;&lt; <span class="hljs-built_in">max</span>(f[<span class="hljs-number">1</span>][m][<span class="hljs-number">1</span>], f[<span class="hljs-number">1</span>][m][<span class="hljs-number">0</span>]) &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
+              
               
             </div>
             <hr/>
@@ -287,7 +272,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/doj/">#doj</a>
+        <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">#蓝桥杯</a>
       
     </div>
   
@@ -299,8 +284,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>DOJ没有上司的舞会2（树形背包）</div>
-      <div>http://www.xia0nian.xyz/2022/03/08/DOJ%E6%B2%A1%E6%9C%89%E4%B8%8A%E5%8F%B8%E7%9A%84%E8%88%9E%E4%BC%9A2/</div>
+      <div>noj contest195</div>
+      <div>http://www.xia0nian.xyz/2022/04/04/noj-contest195/</div>
     </div>
     <div class="license-meta">
       
@@ -312,7 +297,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年3月8日</div>
+          <div>2022年4月4日</div>
         </div>
       
       
@@ -342,18 +327,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/09/cf774div2p4/" title="Codeforces Round 774(Div.2) Problem C(树形背包)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Codeforces Round 774(Div.2) Problem C(树形背包)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/07/cf775div2p3/" title="Codeforces Round 775(Div.2) Problem C Weird Sum(匿名函数的使用)">
-                        <span class="hidden-mobile">Codeforces Round 775(Div.2) Problem C Weird Sum(匿名函数的使用)</span>
+                      <a href="/2022/04/04/noj-contest194/" title="noj contest194">
+                        <span class="hidden-mobile">noj contest194</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
