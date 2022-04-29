@@ -16,12 +16,12 @@
   <meta name="author" content="xiaonian">
   <meta name="keywords" content="">
   
-    <meta name="description" content="01序列原题链接 题意给出一个$01$字符串，有多少子串中有$k$个$1$。 方法一前缀和 不需要特判且简单，感觉有点像dp。 12345678910111213141516171819202122232425262728#include &lt;bits&#x2F;stdc++.h&gt;using namespace std;int k;char s[1000010];int p[1000010], c">
+    <meta name="description" content="01序列 原题链接  题意 给出一个010101字符串，有多少子串中有kkk个111。  方法一 前缀和 不需要特判且简单，感觉有点像dp。 12345678910111213141516171819202122232425262728#include &lt;bits&#x2F;stdc++.h&gt;using namespace std;int k;char s[1000010];int p[100">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DOJ Daily Div2 207 01序列(前缀和)">
 <meta property="og:url" content="http://www.xia0nian.xyz/2022/03/11/DOJ-Daily-Div2-207-01%E5%BA%8F%E5%88%97/index.html">
 <meta property="og:site_name" content="小念">
-<meta property="og:description" content="01序列原题链接 题意给出一个$01$字符串，有多少子串中有$k$个$1$。 方法一前缀和 不需要特判且简单，感觉有点像dp。 12345678910111213141516171819202122232425262728#include &lt;bits&#x2F;stdc++.h&gt;using namespace std;int k;char s[1000010];int p[1000010], c">
+<meta property="og:description" content="01序列 原题链接  题意 给出一个010101字符串，有多少子串中有kkk个111。  方法一 前缀和 不需要特判且简单，感觉有点像dp。 12345678910111213141516171819202122232425262728#include &lt;bits&#x2F;stdc++.h&gt;using namespace std;int k;char s[1000010];int p[100">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-11T11:56:40.000Z">
 <meta property="article:modified_time" content="2022-04-04T10:23:25.617Z">
@@ -41,6 +41,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.15.2/katex.min.css" />
 
 
 
@@ -263,16 +265,18 @@
             
             <div class="markdown-body">
               
-              <h2 id="01序列"><a href="#01序列" class="headerlink" title="01序列"></a>01序列</h2><p><a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/502">原题链接</a></p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给出一个$01$字符串，有多少子串中有$k$个$1$。</p>
-<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>前缀和</p>
+              <h2 id="01序列"><a class="markdownIt-Anchor" href="#01序列"></a> 01序列</h2>
+<p><a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/502">原题链接</a></p>
+<h3 id="题意"><a class="markdownIt-Anchor" href="#题意"></a> 题意</h3>
+<p>给出一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>01</mn></mrow><annotation encoding="application/x-tex">01</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">1</span></span></span></span>字符串，有多少子串中有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。</p>
+<h3 id="方法一"><a class="markdownIt-Anchor" href="#方法一"></a> 方法一</h3>
+<p>前缀和</p>
 <p>不需要特判且简单，感觉有点像dp。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> k;<br><span class="hljs-type">char</span> s[<span class="hljs-number">1000010</span>];<br><span class="hljs-type">int</span> p[<span class="hljs-number">1000010</span>], c[<span class="hljs-number">1000010</span>];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin &gt;&gt; k &gt;&gt; s + <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">strlen</span>(s + <span class="hljs-number">1</span>);<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++)<br>    	p[i] = p[i - <span class="hljs-number">1</span>] + (s[i] == <span class="hljs-string">&#x27;1&#x27;</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>);<br><br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">//p[r] - p[l - 1] == k</span><br>    <span class="hljs-comment">//p[r] == p[l - 1] + k</span><br>    <span class="hljs-comment">// l &lt;= r -&gt; (l - 1) &lt; r 所以l-1在r前面，所以每次加c[p[i - 1]]</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++)<br>    &#123;<br>        c[p[i - <span class="hljs-number">1</span>] + k] ++;<br>        ans += c[p[i]];<br>    &#125;<br><br>    cout &lt;&lt; ans &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>双指针，要特判，代码较麻烦。</p>
+<h3 id="方法二"><a class="markdownIt-Anchor" href="#方法二"></a> 方法二</h3>
+<p>双指针，要特判，代码较麻烦。</p>
 <p>开始想到前缀和，但是不知道怎么计算个数。原来可以用个数组记录一下当前需要的下标的数量。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> k;<br><span class="hljs-type">char</span> s[<span class="hljs-number">1000010</span>];<br><span class="hljs-type">int</span> c[<span class="hljs-number">1000010</span>], m;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin &gt;&gt; k &gt;&gt; s + <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">strlen</span>(s + <span class="hljs-number">1</span>);<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++)<br>    	<span class="hljs-keyword">if</span>(s[i] == <span class="hljs-string">&#x27;1&#x27;</span>) c[m ++] = i;<br><br>    <span class="hljs-keyword">if</span>(m &lt; k)&#123;<br>    	cout &lt;&lt; <span class="hljs-string">&quot;0\n&quot;</span>;<br>    	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(k == <span class="hljs-number">0</span>)&#123;<br>    	<span class="hljs-type">long</span> <span class="hljs-type">long</span> ans = <span class="hljs-number">0</span>, last = <span class="hljs-number">0</span>;<br>    	<span class="hljs-keyword">for</span>(<span class="hljs-type">long</span> <span class="hljs-type">long</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++)<br>    		<span class="hljs-keyword">if</span>(s[i] == <span class="hljs-string">&#x27;1&#x27;</span>)&#123;<br>    			<span class="hljs-keyword">if</span>(s[i - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;0&#x27;</span>)<br>    				ans += (i - last - <span class="hljs-number">1</span>) * (i - last) / <span class="hljs-number">2</span>;<br>    			last = i;<br>    		&#125;<br>    	<span class="hljs-keyword">if</span>(s[n] == <span class="hljs-string">&#x27;0&#x27;</span>) ans += (n - last) * (n - last + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;<br>    	cout &lt;&lt; ans &lt;&lt; endl;<br>    	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">long</span> <span class="hljs-type">long</span> l = <span class="hljs-number">0</span>, r = k - <span class="hljs-number">1</span>; r &lt; m; l ++, r ++)&#123;<br>    	<span class="hljs-type">long</span> <span class="hljs-type">long</span> cl, cr;<br>    	<span class="hljs-keyword">if</span>(l == <span class="hljs-number">0</span>) cl = c[l];<br>    	<span class="hljs-keyword">else</span> cl = c[l] - c[l - <span class="hljs-number">1</span>];<br>    	<span class="hljs-keyword">if</span>(r == m - <span class="hljs-number">1</span>) cr = n + <span class="hljs-number">1</span> - c[r];<br>    	<span class="hljs-keyword">else</span> cr = c[r + <span class="hljs-number">1</span>] - c[r];<br>    	ans += cl * cr;<br>    &#125;<br><br>    cout &lt;&lt; ans &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 
               
             </div>
@@ -408,7 +412,6 @@
 
   
   
-
 
 
 
@@ -642,44 +645,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        MathJax = {
-          tex    : {
-            inlineMath: { '[+]': [['$', '$']] }
-          },
-          loader : {
-            load: ['ui/lazy']
-          },
-          options: {
-            renderActions: {
-              findScript    : [10, doc => {
-                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-                  const display = !!node.type.match(/; *mode=display/);
-                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-                  const text = document.createTextNode('');
-                  node.parentNode.replaceChild(text, node);
-                  math.start = { node: text, delim: '', n: 0 };
-                  math.end = { node: text, delim: '', n: 0 };
-                  doc.math.push(math);
-                });
-              }, '', false],
-              insertedScript: [200, () => {
-                document.querySelectorAll('mjx-container').forEach(node => {
-                  let target = node.parentNode;
-                  if (target.nodeName.toLowerCase() === 'li') {
-                    target.parentNode.classList.add('has-jax');
-                  }
-                });
-              }, '', false]
-            }
-          }
-        };
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.0/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

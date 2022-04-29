@@ -16,12 +16,12 @@
   <meta name="author" content="xiaonian">
   <meta name="keywords" content="">
   
-    <meta name="description" content="原题链接​        从序列 $M$ 个数中顺序选出 $N$个不同的数, 使得这 $N$个数的字典序最小。 输入格式​        第一行两个整数 $M$, $N$分别表示序列长度，顺序选取数据的个数 (其中$1&lt;N\leq M \leq 10^6$）。 ​        接下来$M$行，第$i$输入为$a_i$，表示序列$M$中第$i$个数，其中$1\leq a_i \leq N$，">
+    <meta name="description" content="原题链接 ​		从序列 MMM 个数中顺序选出 NNN个不同的数, 使得这 NNN个数的字典序最小。  输入格式 ​		第一行两个整数 MMM, NNN分别表示序列长度，顺序选取数据的个数 (其中1&lt;N≤M≤1061&lt;N\leq M \leq 10^61&lt;N≤M≤106）。 ​		接下来MMM行，第iii输入为aia_iai​，表示序列MMM中第iii个数，其中1≤ai≤N1\">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DOJ 608 字典序最小(单调栈)">
 <meta property="og:url" content="http://www.xia0nian.xyz/2022/03/21/doj608/index.html">
 <meta property="og:site_name" content="小念">
-<meta property="og:description" content="原题链接​        从序列 $M$ 个数中顺序选出 $N$个不同的数, 使得这 $N$个数的字典序最小。 输入格式​        第一行两个整数 $M$, $N$分别表示序列长度，顺序选取数据的个数 (其中$1&lt;N\leq M \leq 10^6$）。 ​        接下来$M$行，第$i$输入为$a_i$，表示序列$M$中第$i$个数，其中$1\leq a_i \leq N$，">
+<meta property="og:description" content="原题链接 ​		从序列 MMM 个数中顺序选出 NNN个不同的数, 使得这 NNN个数的字典序最小。  输入格式 ​		第一行两个整数 MMM, NNN分别表示序列长度，顺序选取数据的个数 (其中1&lt;N≤M≤1061&lt;N\leq M \leq 10^61&lt;N≤M≤106）。 ​		接下来MMM行，第iii输入为aia_iai​，表示序列MMM中第iii个数，其中1≤ai≤N1\">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-21T08:21:11.000Z">
 <meta property="article:modified_time" content="2022-04-04T10:22:53.214Z">
@@ -41,6 +41,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.15.2/katex.min.css" />
 
 
 
@@ -210,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.1k 字
         
       </span>
     
@@ -221,7 +223,7 @@
         
         
         
-          9 分钟
+          10 分钟
         
       </span>
     
@@ -263,18 +265,29 @@
             
             <div class="markdown-body">
               
-              <h4 id="原题链接"><a href="#原题链接" class="headerlink" title="原题链接"></a><a target="_blank" rel="noopener" href="http://oj.daimayuan.top/problem/608">原题链接</a></h4><p>​        从序列 $M$ 个数中顺序选出 $N$个不同的数, 使得这 $N$个数的字典序最小。</p>
-<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>​        第一行两个整数 $M$, $N$分别表示序列长度，顺序选取数据的个数 (其中$1&lt;N\leq M \leq 10^6$）。</p>
-<p>​        接下来$M$行，第$i$输入为$a_i$，表示序列$M$中第$i$个数，其中$1\leq a_i \leq N$，数据保证 $[1,N]$范围内每个数至少出        现一次。</p>
-<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>​        输出$N$个数, 用空格隔开, 表示最小字典序 （最后一个输出不能有多余空格）。</p>
-<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">6</span> <span class="hljs-number">3</span><br><span class="hljs-number">3</span><br><span class="hljs-number">2</span><br><span class="hljs-number">1</span><br><span class="hljs-number">3</span><br><span class="hljs-number">1</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="题目说明"><a href="#题目说明" class="headerlink" title="题目说明"></a>题目说明</h4><p>​        求解的最小字典序不必在序列$M$中连续。</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>​        因为要顺序取，考虑单调栈，在维护出现顺序的同时要求字典序尽可能小。<br>​        所以小的数应该尽可能放在前面，大的数要尽可能放在后面。<br>​        扫描每一个数a：<br>​        1.如果a已经在栈里，就continue。<br>​        2.如果栈顶的元素b如果比a大，且b有机会在后面再进栈的话（保证如果取，则不会漏掉某个数），那就暂时        弹出b。<br>​        3.重复操作，直到栈空或者栈顶小于a，在压入a。<br>​        这样就在维护出现顺序的同时，也保证了字典序最小。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n, m, a[<span class="hljs-number">1000010</span>], b[<span class="hljs-number">1000010</span>], s[<span class="hljs-number">1000010</span>], in[<span class="hljs-number">1000010</span>], top = <span class="hljs-number">-1</span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin &gt;&gt; m &gt;&gt; n;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i ++) cin &gt;&gt; a[i], b[a[i]] = i;<span class="hljs-comment">//记录一下每个数最后出现的下标</span><br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i ++)<br>    &#123;<br>    	<span class="hljs-keyword">if</span>(in[a[i]]) <span class="hljs-keyword">continue</span>;<br>    	<span class="hljs-keyword">while</span>(top != <span class="hljs-number">-1</span> &amp;&amp; s[top] &gt;= a[i] &amp;&amp; b[s[top]] &gt;= i)<br>    		<span class="hljs-comment">//栈不空，栈顶大于现在这个数，栈顶在后面还能加进来</span><br>    		in[s[top --]] = <span class="hljs-number">0</span>;<br>    		s[++ top] = a[i], in[a[i]] = <span class="hljs-number">1</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; top; i ++) cout &lt;&lt; s[i] &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span>;<br>    	cout &lt;&lt; s[top];<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
+              <h4 id="原题链接"><a class="markdownIt-Anchor" href="#原题链接"></a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/problem/608">原题链接</a></h4>
+<p>​		从序列 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span> 个数中顺序选出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>个不同的数, 使得这 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>个数的字典序最小。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式</h4>
+<p>​		第一行两个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>分别表示序列长度，顺序选取数据的个数 (其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>N</mi><mo>≤</mo><mi>M</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">1&lt;N\leq M \leq 10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68354em;vertical-align:-0.0391em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span>）。</p>
+<p>​		接下来<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>行，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>输入为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，表示序列<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>中第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>个数，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>≤</mo><msub><mi>a</mi><mi>i</mi></msub><mo>≤</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">1\leq a_i \leq N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7859700000000001em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>，数据保证 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo separator="true">,</mo><mi>N</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1,N]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">]</span></span></span></span>范围内每个数至少出		现一次。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式</h4>
+<p>​		输出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>个数, 用空格隔开, 表示最小字典序 （最后一个输出不能有多余空格）。</p>
+<h4 id="样例输入"><a class="markdownIt-Anchor" href="#样例输入"></a> 样例输入</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">6</span> <span class="hljs-number">3</span><br><span class="hljs-number">3</span><br><span class="hljs-number">2</span><br><span class="hljs-number">1</span><br><span class="hljs-number">3</span><br><span class="hljs-number">1</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<h4 id="样例输出"><a class="markdownIt-Anchor" href="#样例输出"></a> 样例输出</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<h4 id="题目说明"><a class="markdownIt-Anchor" href="#题目说明"></a> 题目说明</h4>
+<p>​		求解的最小字典序不必在序列<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>中连续。</p>
+<h4 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路</h4>
+<p>​		因为要顺序取，考虑单调栈，在维护出现顺序的同时要求字典序尽可能小。<br>
+​		所以小的数应该尽可能放在前面，大的数要尽可能放在后面。<br>
+​		扫描每一个数a：<br>
+​		1.如果a已经在栈里，就continue。<br>
+​		2.如果栈顶的元素b如果比a大，且b有机会在后面再进栈的话（保证如果取，则不会漏掉某个数），那就暂时		弹出b。<br>
+​		3.重复操作，直到栈空或者栈顶小于a，在压入a。<br>
+​		这样就在维护出现顺序的同时，也保证了字典序最小。</p>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n, m, a[<span class="hljs-number">1000010</span>], b[<span class="hljs-number">1000010</span>], s[<span class="hljs-number">1000010</span>], in[<span class="hljs-number">1000010</span>], top = <span class="hljs-number">-1</span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin &gt;&gt; m &gt;&gt; n;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i ++) cin &gt;&gt; a[i], b[a[i]] = i;<span class="hljs-comment">//记录一下每个数最后出现的下标</span><br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i ++)<br>    &#123;<br>    	<span class="hljs-keyword">if</span>(in[a[i]]) <span class="hljs-keyword">continue</span>;<br>    	<span class="hljs-keyword">while</span>(top != <span class="hljs-number">-1</span> &amp;&amp; s[top] &gt;= a[i] &amp;&amp; b[s[top]] &gt;= i)<br>    		<span class="hljs-comment">//栈不空，栈顶大于现在这个数，栈顶在后面还能加进来</span><br>    		in[s[top --]] = <span class="hljs-number">0</span>;<br>    		s[++ top] = a[i], in[a[i]] = <span class="hljs-number">1</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; top; i ++) cout &lt;&lt; s[i] &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span>;<br>    	cout &lt;&lt; s[top];<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
               
             </div>
@@ -410,7 +423,6 @@
 
   
   
-
 
 
 
@@ -644,44 +656,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        MathJax = {
-          tex    : {
-            inlineMath: { '[+]': [['$', '$']] }
-          },
-          loader : {
-            load: ['ui/lazy']
-          },
-          options: {
-            renderActions: {
-              findScript    : [10, doc => {
-                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-                  const display = !!node.type.match(/; *mode=display/);
-                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-                  const text = document.createTextNode('');
-                  node.parentNode.replaceChild(text, node);
-                  math.start = { node: text, delim: '', n: 0 };
-                  math.end = { node: text, delim: '', n: 0 };
-                  doc.math.push(math);
-                });
-              }, '', false],
-              insertedScript: [200, () => {
-                document.querySelectorAll('mjx-container').forEach(node => {
-                  let target = node.parentNode;
-                  if (target.nodeName.toLowerCase() === 'li') {
-                    target.parentNode.classList.add('has-jax');
-                  }
-                });
-              }, '', false]
-            }
-          }
-        };
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.0/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
