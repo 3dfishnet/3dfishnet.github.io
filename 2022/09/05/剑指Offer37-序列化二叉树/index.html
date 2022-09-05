@@ -16,15 +16,15 @@
   <meta name="author" content="xiaonian">
   <meta name="keywords" content="">
   
-    <meta name="description" content="剑指 Offer 37. 序列化二叉树">
+    <meta name="description" content="剑指 Offer 37. 序列化二叉树  方法一：先序遍历 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&#x2F;** * Definition for a binary tree node. * struct TreeNode &amp;#123; *">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指Offer37.序列化二叉树">
 <meta property="og:url" content="http://www.xia0nian.xyz/2022/09/05/%E5%89%91%E6%8C%87Offer37-%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="小念">
-<meta property="og:description" content="剑指 Offer 37. 序列化二叉树">
+<meta property="og:description" content="剑指 Offer 37. 序列化二叉树  方法一：先序遍历 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&#x2F;** * Definition for a binary tree node. * struct TreeNode &amp;#123; *">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-05T07:37:01.000Z">
-<meta property="article:modified_time" content="2022-09-05T07:38:49.526Z">
+<meta property="article:modified_time" content="2022-09-05T08:26:57.547Z">
 <meta property="article:author" content="xiaonian">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary_large_image">
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16 字
+          1.1k 字
         
       </span>
     
@@ -223,7 +223,7 @@
         
         
         
-          1 分钟
+          10 分钟
         
       </span>
     
@@ -266,6 +266,8 @@
             <div class="markdown-body">
               
               <h4 id="剑指-offer-37-序列化二叉树"><a class="markdownIt-Anchor" href="#剑指-offer-37-序列化二叉树"></a> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/xu-lie-hua-er-cha-shu-lcof/">剑指 Offer 37. 序列化二叉树</a></h4>
+<h3 id="方法一先序遍历"><a class="markdownIt-Anchor" href="#方法一先序遍历"></a> 方法一：先序遍历</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for a binary tree node.</span><br><span class="hljs-comment"> * struct TreeNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     TreeNode *left;</span><br><span class="hljs-comment"> *     TreeNode *right;</span><br><span class="hljs-comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="hljs-comment"> * &#125;;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Codec</span> &#123;<br><span class="hljs-keyword">public</span>:<br><br>    <span class="hljs-comment">// Encodes a tree to a single string.</span><br>    <span class="hljs-function">string <span class="hljs-title">serialize</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;string&gt; t;<br>        function&lt;<span class="hljs-type">void</span>(TreeNode*)&gt; dfs = [&amp;](TreeNode* node) -&gt;<span class="hljs-type">void</span> &#123;<br>            <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">NULL</span>) &#123;<br>                t.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;N&quot;</span>);<br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br>            t.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">to_string</span>(node-&gt;val));<br>            <span class="hljs-built_in">dfs</span>(node-&gt;left);<br>            <span class="hljs-built_in">dfs</span>(node-&gt;right);<br>        &#125;;<br>        <span class="hljs-built_in">dfs</span>(root);<br>        string res;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;s : t) &#123;<br>            res.<span class="hljs-built_in">append</span>(s);<br>            res.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&#x27; &#x27;</span>);<br>        &#125;<br>        res.<span class="hljs-built_in">pop_back</span>();<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-comment">// Decodes your encoded data to tree.</span><br>    <span class="hljs-function">TreeNode* <span class="hljs-title">deserialize</span><span class="hljs-params">(string data)</span> </span>&#123;<br>        <span class="hljs-function">stringstream <span class="hljs-title">ss</span><span class="hljs-params">(data)</span></span>;<br>        vector&lt;string&gt; t;<br>        string s;<br>        <span class="hljs-keyword">while</span> (ss &gt;&gt; s) t.<span class="hljs-built_in">push_back</span>(s);<br>        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>        function&lt;TreeNode*()&gt; build = [&amp;]() -&gt; TreeNode* &#123;<br>            s = t[i++];<br>            <span class="hljs-keyword">if</span> (s == <span class="hljs-string">&quot;N&quot;</span>)<br>            <span class="hljs-keyword">return</span> (TreeNode*)<span class="hljs-literal">NULL</span>;<br>            TreeNode* node = <span class="hljs-keyword">new</span> <span class="hljs-built_in">TreeNode</span>(<span class="hljs-built_in">stoi</span>(s));<br>            node-&gt;left = <span class="hljs-built_in">build</span>(); <span class="hljs-comment">//自己调用的时候不能使用auto定义</span><br>            node-&gt;right = <span class="hljs-built_in">build</span>();<br>            <span class="hljs-keyword">return</span> node;<br>        &#125;;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">build</span>();<br>    &#125;<br><br>&#125;;<br></code></pre></td></tr></table></figure>
 
               
             </div>
