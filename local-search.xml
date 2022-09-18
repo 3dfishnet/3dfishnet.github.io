@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>树状数组练习</title>
+    <link href="/2022/09/18/binaryIndexedTree/"/>
+    <url>/2022/09/18/binaryIndexedTree/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>树状数组</tag>
+      
+      <tag>数据结构</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>LeetCode850.矩形面积Ⅱ(扫描线+线段树)</title>
     <link href="/2022/09/18/leetcode850/"/>
     <url>/2022/09/18/leetcode850/</url>
