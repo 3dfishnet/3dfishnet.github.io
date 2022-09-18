@@ -18,7 +18,7 @@
   
     <meta name="description" content="树状数组 又称二进制索引树(Binary Indexed Trees)，通过二进制分解划分区间。 查询前缀和和点更新都需要O(logn)O(logn)O(logn)时间。   区间长度 若iii的二进制表示末尾有kkk个连续的000，则c[i]c[i]c[i]存储的区间长度为2k2^k2k，从a[i]a[i]a[i]向前数2k2^k2k个元素，即c[i]&#x3D;a[i−2k+1]+a[i−2k+2]+">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树状数组与线段树">
+<meta property="og:title" content="树状数组">
 <meta property="og:url" content="http://www.xia0nian.xyz/2022/09/18/binaryIndexedTree/index.html">
 <meta property="og:site_name" content="小念">
 <meta property="og:description" content="树状数组 又称二进制索引树(Binary Indexed Trees)，通过二进制分解划分区间。 查询前缀和和点更新都需要O(logn)O(logn)O(logn)时间。   区间长度 若iii的二进制表示末尾有kkk个连续的000，则c[i]c[i]c[i]存储的区间长度为2k2^k2k，从a[i]a[i]a[i]向前数2k2^k2k个元素，即c[i]&#x3D;a[i−2k+1]+a[i−2k+2]+">
@@ -28,16 +28,15 @@
 <meta property="og:image" content="http://www.xia0nian.xyz/2022/09/18/binaryIndexedTree/3.png">
 <meta property="og:image" content="http://www.xia0nian.xyz/2022/09/18/binaryIndexedTree/4.png">
 <meta property="article:published_time" content="2022-09-18T09:27:19.000Z">
-<meta property="article:modified_time" content="2022-09-18T14:11:25.591Z">
+<meta property="article:modified_time" content="2022-09-18T14:15:08.209Z">
 <meta property="article:author" content="xiaonian">
 <meta property="article:tag" content="树状数组">
 <meta property="article:tag" content="数据结构">
-<meta property="article:tag" content="线段树">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://www.xia0nian.xyz/2022/09/18/binaryIndexedTree/1.png">
   
   
-  <title>树状数组与线段树 - 小念</title>
+  <title>树状数组 - 小念</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +195,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="树状数组与线段树"></span>
+            <span id="subtitle" data-typed-text="树状数组"></span>
           
         </div>
 
@@ -268,7 +267,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">树状数组与线段树</h1>
+            <h1 style="display: none">树状数组</h1>
             
             <div class="markdown-body">
               
@@ -316,7 +315,6 @@
 <p>使用两个树状数组维护<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>r</mi><mn>1</mn><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>b</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">tr1[i] = b[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">1</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>r</mi><mn>2</mn><mo>=</mo><mi>i</mi><mo>∗</mo><mi>b</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">tr2 = i*b[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>。</p>
 <img src="/2022/09/18/binaryIndexedTree/4.png" srcset="/img/loading.gif" lazyload style="zoom: 70%;">
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">1e5</span> + <span class="hljs-number">5</span>;<br><span class="hljs-type">int</span> a[N], b, n, m;<br><span class="hljs-type">long</span> <span class="hljs-type">long</span> tr1[N], tr2[N];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123; <span class="hljs-keyword">return</span> -x &amp; x; &#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> c[], <span class="hljs-type">int</span> x, <span class="hljs-type">long</span> <span class="hljs-type">long</span> k)</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = x; i &lt;= n; i += <span class="hljs-built_in">lowbit</span>(i))<br>        c[i] += k;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">sum</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> c[], <span class="hljs-type">int</span> x)</span> </span>&#123;<br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> res = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = x; i &gt; <span class="hljs-number">0</span>; i -= <span class="hljs-built_in">lowbit</span>(i))<br>        res += c[i];<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">pre</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>(tr1, x) * (x + <span class="hljs-number">1</span>) - <span class="hljs-built_in">sum</span>(tr2, x);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>); cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin &gt;&gt; n &gt;&gt; m;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) <br>        cin &gt;&gt; a[i];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>        b = a[i] - a[i - <span class="hljs-number">1</span>];<br>        <span class="hljs-built_in">add</span>(tr1, i, b);<br>        <span class="hljs-built_in">add</span>(tr2, i, (<span class="hljs-type">long</span> <span class="hljs-type">long</span>)i * b);<br>    &#125;<br>    <span class="hljs-keyword">while</span> (m--) &#123;<br>        <span class="hljs-type">char</span> op;<br>        <span class="hljs-type">int</span> l, r, d;<br>        cin &gt;&gt; op &gt;&gt; l &gt;&gt; r;<br>        <span class="hljs-keyword">if</span> (op == <span class="hljs-string">&#x27;Q&#x27;</span>) &#123;<br>            cout &lt;&lt; <span class="hljs-built_in">pre</span>(r) - <span class="hljs-built_in">pre</span>(l - <span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            cin &gt;&gt; d;<br>            <span class="hljs-comment">//b[l] += d</span><br>            <span class="hljs-built_in">add</span>(tr1, l, d);<br>            <span class="hljs-built_in">add</span>(tr2, l, l * d);<br>            <span class="hljs-comment">//b[r+1] -= d</span><br>            <span class="hljs-built_in">add</span>(tr1, r + <span class="hljs-number">1</span>, -d);<br>            <span class="hljs-built_in">add</span>(tr2, r + <span class="hljs-number">1</span>, (r + <span class="hljs-number">1</span>) * -d);<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="线段树"><a class="markdownIt-Anchor" href="#线段树"></a> 线段树</h1>
 
               
             </div>
@@ -332,8 +330,6 @@
       
         <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
       
-        <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">#线段树</a>
-      
     </div>
   
 </div>
@@ -344,7 +340,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>树状数组与线段树</div>
+      <div>树状数组</div>
       <div>http://www.xia0nian.xyz/2022/09/18/binaryIndexedTree/</div>
     </div>
     <div class="license-meta">
