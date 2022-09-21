@@ -19,17 +19,17 @@
     <meta name="description" content="原题链接   做法 关于状态表示的一些理解： dp[i][j]dp[i][j]dp[i][j]表示前i个括号，其中左括号比右括号最多多jjj个的方法数。 为什么第二维是这样设定的呢？ 因为对于一个合法的括号序列，其任意一个前缀子序列中左括号的个数一定大于等于右括号的个数， 所以我们在求解过程中就要保证任意前缀子序列都是合法的。 题目要求我们加入最少的括号来使序列合法，所以我们最后要找到的是： ①">
 <meta property="og:type" content="article">
 <meta property="og:title" content="蓝桥杯第十二届省赛CB组J题 括号序列（dp）">
-<meta property="og:url" content="http://www.xia0nian.xyz/2022/03/11/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%B1%8A%E7%9C%81%E8%B5%9BCB%E7%BB%84J%E9%A2%98-%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97%EF%BC%88dp%EF%BC%89/index.html">
+<meta property="og:url" content="https://3dfishnet.github.io/2022/03/11/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%B1%8A%E7%9C%81%E8%B5%9BCB%E7%BB%84J%E9%A2%98-%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97%EF%BC%88dp%EF%BC%89/index.html">
 <meta property="og:site_name" content="小念">
 <meta property="og:description" content="原题链接   做法 关于状态表示的一些理解： dp[i][j]dp[i][j]dp[i][j]表示前i个括号，其中左括号比右括号最多多jjj个的方法数。 为什么第二维是这样设定的呢？ 因为对于一个合法的括号序列，其任意一个前缀子序列中左括号的个数一定大于等于右括号的个数， 所以我们在求解过程中就要保证任意前缀子序列都是合法的。 题目要求我们加入最少的括号来使序列合法，所以我们最后要找到的是： ①">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://www.xia0nian.xyz/2022/03/11/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%B1%8A%E7%9C%81%E8%B5%9BCB%E7%BB%84J%E9%A2%98-%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97%EF%BC%88dp%EF%BC%89/problem.png">
+<meta property="og:image" content="https://3dfishnet.github.io/2022/03/11/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%B1%8A%E7%9C%81%E8%B5%9BCB%E7%BB%84J%E9%A2%98-%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97%EF%BC%88dp%EF%BC%89/problem.png">
 <meta property="article:published_time" content="2022-03-11T05:41:18.000Z">
 <meta property="article:modified_time" content="2022-04-04T10:26:01.501Z">
 <meta property="article:author" content="xiaonian">
 <meta property="article:tag" content="蓝桥杯">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://www.xia0nian.xyz/2022/03/11/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%B1%8A%E7%9C%81%E8%B5%9BCB%E7%BB%84J%E9%A2%98-%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97%EF%BC%88dp%EF%BC%89/problem.png">
+<meta name="twitter:image" content="https://3dfishnet.github.io/2022/03/11/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%B1%8A%E7%9C%81%E8%B5%9BCB%E7%BB%84J%E9%A2%98-%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97%EF%BC%88dp%EF%BC%89/problem.png">
   
   
   <title>蓝桥杯第十二届省赛CB组J题 括号序列（dp） - 小念</title>
@@ -71,7 +71,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"www.xia0nian.xyz","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"3dfishnet.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -327,7 +327,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>蓝桥杯第十二届省赛CB组J题 括号序列（dp）</div>
-      <div>http://www.xia0nian.xyz/2022/03/11/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%B1%8A%E7%9C%81%E8%B5%9BCB%E7%BB%84J%E9%A2%98-%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97%EF%BC%88dp%EF%BC%89/</div>
+      <div>https://3dfishnet.github.io/2022/03/11/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%B1%8A%E7%9C%81%E8%B5%9BCB%E7%BB%84J%E9%A2%98-%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97%EF%BC%88dp%EF%BC%89/</div>
     </div>
     <div class="license-meta">
       
